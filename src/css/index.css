@@ -1,0 +1,25 @@
+/*
+  #243847
+  #2e4051
+  #a7b1c3
+  #00ab8d
+  #e7eaec
+  #01a789
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  height: 100vh;
+}
