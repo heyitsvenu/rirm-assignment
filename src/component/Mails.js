@@ -1,9 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import MailsListHeader from './MailsListHeader';
+import MailsList from './MailsList';
+import ComposeMail from './ComposeMail';
 
-function Mails() {
+function Mails({
+  data,
+  handleChange,
+  handleDelete,
+  composeMail,
+  openComposeMail,
+  setTo,
+  setSubject,
+  setBody,
+  openSentBox,
+  sentMails,
+  handleComposeMailSubmit,
+}) {
+  const [isSent, setIsSent] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsSent(false), 2000);
+  }, [isSent]);
+
   return (
     <div className='mails'>
-      <h1>world</h1>
+      <MailsListHeader data={data} handleDelete={handleDelete} />
+      <div className='mail-list'>
+        <MailsList
+          data={openSentBox ? sentMails : data}
+          handleChange={handleChange}
+          openSentBox={openSentBox}
+        />
+        {isSent ? <div className='sent-toast'>Mail Sent</div> : null}
+      </div>
+      {composeMail && (
+        <ComposeMail
+          openComposeMail={openComposeMail}
+          setTo={setTo}
+          setSubject={setSubject}
+          setBody={setBody}
+          handleComposeMailSubmit={handleComposeMailSubmit}
+          isSent={isSent}
+          setIsSent={setIsSent}
+        />
+      )}
     </div>
   );
 }

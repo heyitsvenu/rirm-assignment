@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function MailHeader() {
+function MailHeader({ data, handleLogoutClick }) {
   return (
     <div className='mail-header'>
       <div className='bars'>
@@ -13,7 +13,7 @@ function MailHeader() {
       <div className='alert-icons'>
         <div className='unread-msgs'>
           <FontAwesomeIcon icon={['fas', 'envelope']} size='lg' />
-          <span>16</span>
+          <span>{data.length}</span>
         </div>
         <div className='notification'>
           <FontAwesomeIcon icon={['fas', 'bell']} size='lg' />
@@ -21,7 +21,7 @@ function MailHeader() {
         </div>
       </div>
       <div className='logout-btn'>
-        <button>
+        <button onClick={handleLogoutClick}>
           <FontAwesomeIcon icon={['fas', 'sign-out-alt']} /> Log out
         </button>
       </div>

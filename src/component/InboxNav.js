@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function InboxNav() {
+function InboxNav({
+  data,
+  openComposeMail,
+  handleOpenInbox,
+  handleOpenSentMail,
+  sentMails,
+}) {
   return (
     <div className='inbox-nav'>
       <div className='compose-btn'>
-        <button>Compose Mail</button>
+        <button onClick={openComposeMail}>Compose Mail</button>
       </div>
       <div className='folder'>
         <div className='folder-heading'>
@@ -13,22 +19,24 @@ function InboxNav() {
         </div>
         <div className='folder-list'>
           <div className='folder-list-item'>
-            <div className='folder-list-item-name'>
+            <div className='folder-list-item-name' onClick={handleOpenInbox}>
               <p>
                 <FontAwesomeIcon icon={['fas', 'inbox']} />
                 &nbsp;&nbsp;&nbsp; Inbox
               </p>
             </div>
-            <div className='folder-list-item-count'>16</div>
+            <div className='folder-list-item-count primary'>{data.length}</div>
           </div>
           <div className='folder-list-item'>
-            <div className='folder-list-item-name'>
+            <div className='folder-list-item-name' onClick={handleOpenSentMail}>
               <p>
                 <FontAwesomeIcon icon={['far', 'envelope']} />
                 &nbsp;&nbsp;&nbsp; Send Mail
               </p>
             </div>
-            <div className='folder-list-item-count'></div>
+            <div className='folder-list-item-count secondary'>
+              {sentMails.length}
+            </div>
           </div>
           <div className='folder-list-item'>
             <div className='folder-list-item-name'>
@@ -46,7 +54,7 @@ function InboxNav() {
                 &nbsp;&nbsp;&nbsp; Drafts
               </p>
             </div>
-            <div className='folder-list-item-count'>2</div>
+            <div className='folder-list-item-count important'>2</div>
           </div>
           <div className='folder-list-item'>
             <div className='folder-list-item-name'>
