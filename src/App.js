@@ -217,6 +217,7 @@ function App() {
     setIsLoginSuccess(!isLoginSuccess);
     setMails([]);
     setSentMails([]);
+    setSubmitError(null);
   };
 
   const handleComposeMailSubmit = () => {

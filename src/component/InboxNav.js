@@ -31,7 +31,7 @@ function InboxNav({
             <div className='folder-list-item-name' onClick={handleOpenSentMail}>
               <p>
                 <FontAwesomeIcon icon={['far', 'envelope']} />
-                &nbsp;&nbsp;&nbsp; Send Mail
+                &nbsp;&nbsp;&nbsp; Sent Mail
               </p>
             </div>
             <div className='folder-list-item-count secondary'>
