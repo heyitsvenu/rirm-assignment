@@ -231,9 +231,11 @@ function App() {
           id:
             JSON.parse(localStorage.getItem('sent-mails')).length !== 0
               ? `sent-${
-                  JSON.parse(localStorage.getItem('sent-mails'))[
-                    JSON.parse(localStorage.getItem('sent-mails')).length - 1
-                  ].id + 1
+                  Number(
+                    JSON.parse(localStorage.getItem('sent-mails'))[
+                      JSON.parse(localStorage.getItem('sent-mails')).length - 1
+                    ].id.slice(-1)
+                  ) + 1
                 }`
               : `sent-1`,
           to: to,
