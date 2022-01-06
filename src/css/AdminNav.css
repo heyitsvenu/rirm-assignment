@@ -27,6 +27,7 @@
   display: grid;
   place-items: center;
   color: #a7b1c3;
+  cursor: pointer;
 }
 
 .nav-items .current {

@@ -35,7 +35,6 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import './css/App.css';
-import { set } from 'date-fns/esm';
 
 library.add(
   faThLarge,
@@ -148,6 +147,7 @@ function App() {
   const [sentMails, setSentMails] = useState(
     JSON.parse(localStorage.getItem('sent-mails'))
   );
+  const [user, setUser] = useState(localStorage.getItem('name'));
 
   const [openSentBox, setOpenSentBox] = useState(false);
 
@@ -166,7 +166,8 @@ function App() {
     localStorage.setItem('isLoggedIn', isLoginSuccess);
     localStorage.setItem('mails', JSON.stringify(initialMails));
     localStorage.setItem('sent-mails', JSON.stringify(sentMails));
-  }, [isLoginSuccess, initialMails, sentMails]);
+    localStorage.setItem('name', user);
+  }, [isLoginSuccess, initialMails, sentMails, user]);
 
   const handleChange = (id) => {
     setMails(
@@ -201,9 +202,10 @@ function App() {
     e.preventDefault();
     if (mock_data.some((data) => data.email === email && data.pwd === pwd)) {
       setIsLoginSuccess(!isLoginSuccess);
-      const { mails } = mock_data.find((data) => data.email === email);
+      const { name, mails } = mock_data.find((data) => data.email === email);
       setMails(mails);
       setSentMails([]);
+      setUser(name);
     } else {
       setSubmitError(() => {
         return (
@@ -218,6 +220,7 @@ function App() {
     setMails([]);
     setSentMails([]);
     setSubmitError(null);
+    setUser('');
   };
 
   const handleComposeMailSubmit = () => {
@@ -271,7 +274,7 @@ function App() {
         </div>
       ) : (
         <>
-          <AdminNav />
+          <AdminNav user={user} />
           <MailBody
             data={initialMails}
             handleChange={handleChange}

@@ -2,11 +2,11 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../css/AdminNav.css';
 
-function AdminNav() {
+function AdminNav({ user }) {
   return (
     <div className='admin-nav'>
       <div className='logo'>
-        <h1>IN+</h1>
+        <h1>{user.slice(0, 2).toUpperCase()}</h1>
       </div>
       <div className='nav-items'>
         <div>

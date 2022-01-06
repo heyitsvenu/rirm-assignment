@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import InboxNavFolderListItem from './InboxNavFolderListItem';
+import InboxNavCategoryListItem from './InboxNavCategoryListItem';
+import InboxNavLabel from './InboxNavLabel';
 
 function InboxNav({
   data,
@@ -10,129 +12,79 @@ function InboxNav({
 }) {
   return (
     <div className='inbox-nav'>
+      {/* Compose Button */}
       <div className='compose-btn'>
         <button onClick={openComposeMail}>Compose Mail</button>
       </div>
+
+      {/* Folders */}
       <div className='folder'>
         <div className='folder-heading'>
           <p>Folders</p>
         </div>
         <div className='folder-list'>
-          <div className='folder-list-item'>
-            <div className='folder-list-item-name' onClick={handleOpenInbox}>
-              <p>
-                <FontAwesomeIcon icon={['fas', 'inbox']} />
-                &nbsp;&nbsp;&nbsp; Inbox
-              </p>
-            </div>
-            <div className='folder-list-item-count primary'>{data.length}</div>
-          </div>
-          <div className='folder-list-item'>
-            <div className='folder-list-item-name' onClick={handleOpenSentMail}>
-              <p>
-                <FontAwesomeIcon icon={['far', 'envelope']} />
-                &nbsp;&nbsp;&nbsp; Sent Mail
-              </p>
-            </div>
-            <div className='folder-list-item-count secondary'>
-              {sentMails.length}
-            </div>
-          </div>
-          <div className='folder-list-item'>
-            <div className='folder-list-item-name'>
-              <p>
-                <FontAwesomeIcon icon={['fas', 'star']} />
-                &nbsp;&nbsp;&nbsp; Important
-              </p>
-            </div>
-            <div className='folder-list-item-count'></div>
-          </div>
-          <div className='folder-list-item'>
-            <div className='folder-list-item-name'>
-              <p>
-                <FontAwesomeIcon icon={['far', 'file-alt']} />
-                &nbsp;&nbsp;&nbsp; Drafts
-              </p>
-            </div>
-            <div className='folder-list-item-count important'>2</div>
-          </div>
-          <div className='folder-list-item'>
-            <div className='folder-list-item-name'>
-              <p>
-                <FontAwesomeIcon icon={['far', 'trash-alt']} />
-                &nbsp;&nbsp;&nbsp; Trash
-              </p>
-            </div>
-            <div className='folder-list-item-count'></div>
-          </div>
+          <InboxNavFolderListItem
+            data={data}
+            handleClick={() => handleOpenInbox()}
+            bgClass='primary'
+            folderName='Inbox'
+            icon={['fas', 'inbox']}
+          />
+          <InboxNavFolderListItem
+            data={sentMails}
+            handleClick={() => handleOpenSentMail()}
+            bgClass='secondary'
+            folderName='Sent Mails'
+            icon={['far', 'envelope']}
+          />
+          <InboxNavFolderListItem
+            folderName='Important'
+            icon={['fas', 'star']}
+          />
+          <InboxNavFolderListItem
+            data='2'
+            bgClass='important'
+            folderName='Drafts'
+            icon={['far', 'file-alt']}
+          />
+          <InboxNavFolderListItem
+            folderName='Trash'
+            icon={['far', 'trash-alt']}
+          />
         </div>
       </div>
+
+      {/* Categories */}
       <div className='category'>
         <div className='category-heading'>
           <p>Categories</p>
         </div>
         <div className='category-list'>
-          <div className='category-list-item'>
-            <span style={{ color: '#00b494' }}>
-              <FontAwesomeIcon icon={['fas', 'circle']} />
-            </span>
-            &nbsp;&nbsp;&nbsp; Work
-          </div>
-          <div className='category-list-item'>
-            <span style={{ color: '#f2524d' }}>
-              <FontAwesomeIcon icon={['fas', 'circle']} />
-            </span>
-            &nbsp;&nbsp;&nbsp; Documents
-          </div>
-          <div className='category-list-item'>
-            <span style={{ color: '#0f83c9' }}>
-              <FontAwesomeIcon icon={['fas', 'circle']} />
-            </span>
-            &nbsp;&nbsp;&nbsp; Social
-          </div>
-          <div className='category-list-item'>
-            <span style={{ color: '#07c6c9' }}>
-              <FontAwesomeIcon icon={['fas', 'circle']} />
-            </span>
-            &nbsp;&nbsp;&nbsp; Advertising
-          </div>
-          <div className='category-list-item'>
-            <span style={{ color: '#faad50' }}>
-              <FontAwesomeIcon icon={['fas', 'circle']} />
-            </span>
-            &nbsp;&nbsp;&nbsp; Clients
-          </div>
+          <InboxNavCategoryListItem color='#00b494' categoryName='Work' />
+          <InboxNavCategoryListItem color='#f2524d' categoryName='Documents' />
+          <InboxNavCategoryListItem color='#0f83c9' categoryName='Social' />
+          <InboxNavCategoryListItem
+            color='#07c6c9'
+            categoryName='Advertising'
+          />
+          <InboxNavCategoryListItem color='#faad50' categoryName='Clients' />
         </div>
       </div>
+
+      {/* Labels */}
       <div className='label'>
         <div className='label-heading'>
           <p>Labels</p>
         </div>
         <div className='label-list'>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Family
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Work
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Home
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Children
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Holidays
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Music
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Photography
-          </button>
-          <button>
-            <FontAwesomeIcon icon={['fas', 'tag']} /> Film
-          </button>
+          <InboxNavLabel>Family</InboxNavLabel>
+          <InboxNavLabel>Work</InboxNavLabel>
+          <InboxNavLabel>Home</InboxNavLabel>
+          <InboxNavLabel>Children</InboxNavLabel>
+          <InboxNavLabel>Holidays</InboxNavLabel>
+          <InboxNavLabel>Music</InboxNavLabel>
+          <InboxNavLabel>Photography</InboxNavLabel>
+          <InboxNavLabel>Film</InboxNavLabel>
         </div>
       </div>
     </div>
