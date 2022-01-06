@@ -8,7 +8,7 @@ function Mails({
   handleChange,
   handleDelete,
   composeMail,
-  openComposeMail,
+  setComposeMail,
   setTo,
   setSubject,
   setBody,
@@ -35,7 +35,7 @@ function Mails({
       </div>
       {composeMail && (
         <ComposeMail
-          openComposeMail={openComposeMail}
+          setComposeMail={setComposeMail}
           setTo={setTo}
           setSubject={setSubject}
           setBody={setBody}

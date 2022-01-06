@@ -20,7 +20,6 @@ function MailBody({
   return (
     <div className='mail-body'>
       <MailHeader data={data} handleLogoutClick={handleLogoutClick} />
-      <hr />
       <Inbox
         data={data}
         handleChange={handleChange}

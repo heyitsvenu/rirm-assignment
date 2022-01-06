@@ -1,9 +1,5 @@
-hr {
-  color: #e7eaec;
-}
-
 .mail-body {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .mail-header {
@@ -12,6 +8,7 @@ hr {
   grid-template-columns: 1fr 9fr 1fr 1fr;
   align-items: center;
   padding: 0 40px 0 40px;
+  border-bottom: 1px solid #e7eaec;
 }
 
 .bars {
@@ -39,9 +36,9 @@ hr {
 }
 
 .alert-icons {
-  width: 80px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   color: #999c9e;
 }
 
@@ -72,11 +69,12 @@ hr {
   color: #9a9d9f;
   font-size: 20px;
   cursor: pointer;
+  width: 100%;
 }
 
 .inbox {
   background-color: #f3f3f4;
-  height: calc(100% - 77px);
+  height: calc(100% - 75px);
   display: grid;
   grid-template-columns: 1fr 2.5fr;
 }
@@ -190,7 +188,7 @@ hr {
   border: 1px solid #dcdedf;
   outline: none;
   display: inline-block;
-  width: 300px;
+  width: 200px;
   height: 40px;
   font-size: 18px;
   color: #686b6d;
@@ -214,6 +212,16 @@ hr {
 .mails .mail-list-header .bottom {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.mails .mail-list-header .bottom .left {
+  width: 100%;
+}
+
+.mails .mail-list-header .bottom .right {
+  width: 100%;
+  display: flex;
+  justify-content: end;
 }
 
 .mails .mail-list-header .bottom .left button,
@@ -242,10 +250,6 @@ hr {
 .mails .mail-list-header .bottom .right button:last-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-
-.mails .mail-list-header .bottom .right {
-  justify-self: end;
 }
 
 .mail-list .mail-list-item {
@@ -354,17 +358,35 @@ hr {
 }
 
 @media (max-width: 1270px) {
-  .mail-body {
-    overflow: auto;
-  }
-
   .mail-header {
     grid-template-columns: 1fr 7fr 1.5fr 1.5fr;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1100px) {
+  .mails .compose-mail {
+    width: 350px;
+    height: 300px;
+  }
+
+  .mails .mail-list-header .bottom .left {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+  }
+}
+
+@media (max-width: 830px) {
   .mail-header {
-    grid-template-columns: 1fr 5fr 2fr 2fr;
+    grid-template-columns: 4fr 2fr 2fr;
+    padding: 0 10px 0 10px;
+  }
+
+  .mail-header .bars {
+    display: none;
+  }
+
+  .mails {
+    grid-template-rows: 200px 1fr;
   }
 }

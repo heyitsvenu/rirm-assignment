@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ComposeMail({
-  openComposeMail,
+  setComposeMail,
   setTo,
   setSubject,
   setBody,
@@ -17,7 +17,7 @@ function ComposeMail({
   return (
     <div className='compose-mail'>
       <div className='compose-mail-header'>
-        <div onClick={openComposeMail}>
+        <div onClick={() => setComposeMail(false)}>
           <FontAwesomeIcon icon={['fas', 'times']} size='lg' />
         </div>
       </div>

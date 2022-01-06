@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import InboxNav from './InboxNav';
 import Mails from './Mails';
 
@@ -18,7 +18,7 @@ function Inbox({
   const [composeMail, setComposeMail] = useState(false);
 
   const openComposeMail = () => {
-    setComposeMail(!composeMail);
+    setComposeMail(true);
   };
 
   return (
@@ -35,7 +35,7 @@ function Inbox({
         handleChange={handleChange}
         handleDelete={handleDelete}
         composeMail={composeMail}
-        openComposeMail={openComposeMail}
+        setComposeMail={setComposeMail}
         setTo={setTo}
         setSubject={setSubject}
         setBody={setBody}

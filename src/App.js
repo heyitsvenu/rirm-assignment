@@ -74,7 +74,7 @@ const mock_data = [
     pwd: '1234',
     mails: [
       {
-        id: 1,
+        id: 'venu-1',
         from: 'Anna',
         subject: 'Lorem ipsum dolor sit amet consectetur',
         body: 'hello world',
@@ -82,7 +82,7 @@ const mock_data = [
         selected: false,
       },
       {
-        id: 2,
+        id: 'venu-2',
         from: 'Matt',
         subject: 'Lorem adipisicing elit. Quia, reiciendis',
         body: 'hello world',
@@ -90,7 +90,7 @@ const mock_data = [
         selected: false,
       },
       {
-        id: 3,
+        id: 'venu-3',
         from: 'Jeff',
         subject: 'Lorem Temporibus, nisi! ipsum dolor',
         body: 'hello world',
@@ -106,7 +106,7 @@ const mock_data = [
     pwd: '1234',
     mails: [
       {
-        id: 1,
+        id: 'hari-1',
         from: 'Dave',
         subject: 'Lorem ipsum dolor sit amet consectetur',
         body: 'hello world',
@@ -114,7 +114,7 @@ const mock_data = [
         selected: false,
       },
       {
-        id: 2,
+        id: 'hari-2',
         from: 'Matt',
         subject: 'Lorem adipisicing elit. Quia, reiciendis',
         body: 'hello world',
@@ -122,7 +122,7 @@ const mock_data = [
         selected: false,
       },
       {
-        id: 3,
+        id: 'hari-3',
         from: 'Randy',
         subject: 'Lorem Temporibus, nisi! ipsum dolor',
         body: 'hello world',
@@ -130,7 +130,7 @@ const mock_data = [
         selected: false,
       },
       {
-        id: 4,
+        id: 'hari-4',
         from: 'Will',
         subject: 'Lorem Temporibus, nisi! ipsum dolor',
         body: 'hello world',
@@ -230,10 +230,12 @@ function App() {
         {
           id:
             JSON.parse(localStorage.getItem('sent-mails')).length !== 0
-              ? JSON.parse(localStorage.getItem('sent-mails'))[
-                  JSON.parse(localStorage.getItem('sent-mails')).length - 1
-                ].id + 1
-              : 1,
+              ? `sent-${
+                  JSON.parse(localStorage.getItem('sent-mails'))[
+                    JSON.parse(localStorage.getItem('sent-mails')).length - 1
+                  ].id + 1
+                }`
+              : `sent-1`,
           to: to,
           subject: subject,
           body: body,
