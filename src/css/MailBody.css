@@ -245,11 +245,25 @@
   border-bottom-left-radius: 0;
 }
 
+.mail-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .mail-list .mail-list-item {
-  display: grid;
-  grid-template-columns: 1fr 4fr 5fr 2fr;
-  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px 10px 30px;
   border-bottom: 1px solid #dcdedf;
+  cursor: pointer;
+}
+
+.mail-list .mail-list-item input[type='checkbox'] {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #dcdedf;
   cursor: pointer;
 }
 
@@ -261,9 +275,12 @@
   border-top: 1px solid #dcdedf;
 }
 
+.mail-list .mail-list-item p {
+  width: 30%;
+}
+
 .mail-list .mail-list-item p:last-child {
-  text-align: end;
-  padding-right: 20px;
+  text-align: right;
 }
 
 .compose-mail {
